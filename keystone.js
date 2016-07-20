@@ -19,8 +19,8 @@ var pkg = require('./package.json');
 
 keystone.init({
 
-	'name': 'SydJS',
-	'brand': 'SydJS',
+	'name': 'NYCNode',
+	'brand': 'NYCNode',
 	'back': '/me',
 
 	'favicon': 'public/favicon.ico',
@@ -40,7 +40,7 @@ keystone.init({
 	'session store': 'mongo',
 	'auth': true,
 	'user model': 'User',
-	'cookie secret': process.env.COOKIE_SECRET || 'sydjs',
+	'cookie secret': process.env.COOKIE_SECRET || 'nycnode',
 
 	'mandrill api key': process.env.MANDRILL_KEY,
 
@@ -78,9 +78,9 @@ keystone.set('locals', {
 
 keystone.set('email locals', {
 	utils: keystone.utils,
-	host: (function() {
-		if (keystone.get('env') === 'staging') return 'http://sydjs-beta.herokuapp.com';
-		if (keystone.get('env') === 'production') return 'http://www.sydjs.com';
+	host: (function () {
+		if (keystone.get('env') === 'staging') return 'http://nycnode-beta.herokuapp.com';
+		if (keystone.get('env') === 'production') return 'http://www.nycnode.com';
 		return (keystone.get('host') || 'http://localhost:') + (keystone.get('port') || '3000');
 	})()
 });

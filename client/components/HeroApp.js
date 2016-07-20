@@ -6,7 +6,7 @@ var HeroApp = React.createClass({
 
 	getInitialState: function() {
 		return {
-			user: SydJS.user,
+			user: NYCNode.user,
 			isBusy: false,
 			isReady: RSVPStore.isLoaded(),
 			meetup: RSVPStore.getMeetup(),

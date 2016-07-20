@@ -1,10 +1,10 @@
 {
-  "name": "sydjs-site",
+  "name": "nycnode-site",
   "version": "3.0.0",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/JedWatson/sydjs-site.git"
+    "url": "https://github.com/JedWatson/nycnode-site.git"
   },
   "dependencies": {
     "async": "1.5.2",
