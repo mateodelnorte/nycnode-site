@@ -4,7 +4,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/JedWatson/nycnode-site.git"
+    "url": "https://github.com/mateodelnorte/nycnode-site.git"
   },
   "dependencies": {
     "async": "1.5.2",
