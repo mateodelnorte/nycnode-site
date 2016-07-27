@@ -30,6 +30,7 @@ Meetup.add({
 	totalRSVPs: { type: Number, noedit: true },
 
 	legacy: { type: Boolean, noedit: true, collapse: true },
+	// externalId: { type: String, required: true },
 });
 
 
