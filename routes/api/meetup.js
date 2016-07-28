@@ -8,6 +8,11 @@ exports = module.exports = function(req, res) {
 
 	var meetupId = req.params.id;
 
+	if (!meetupId) {
+		console.log('no meetup id');
+		return next();
+	}
+
 	var rtn = {
 		meetup: {},
 		attendees: [],
