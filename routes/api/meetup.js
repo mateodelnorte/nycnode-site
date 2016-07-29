@@ -8,8 +8,9 @@ exports = module.exports = function(req, res) {
 
 	var meetupId = req.params.id;
 
-	if (!meetupId) {
-		console.log('no meetup id');
+	// undefined is being parsed in as a string in some cases, check for that
+	if (!meetupId || meetupId === 'undefined') {
+		console.log('No Meetup id specified');
 		return next();
 	}
 

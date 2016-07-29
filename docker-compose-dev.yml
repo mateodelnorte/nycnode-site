@@ -1,0 +1,16 @@
+mongo:
+  image: mongo
+
+site:
+  build: .
+  dockerfile: Dockerfile.dev
+  ports:
+    - '3000:3000'
+  volumes:
+    - .:/home/app/site
+    - /home/app/site/node_modules
+  links:
+    - mongo
+  environment:
+   - MONGO_URI=mongodb://mongo:27017/site
+   - NODE_ENV=development

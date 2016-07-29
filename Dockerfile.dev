@@ -7,7 +7,8 @@ FROM node:4.4.7
 # will run as root, which is against security best practices and principles.
 # We also install the latest version of npm
 RUN useradd --user-group --create-home --shell /bin/false app && \
-  npm install --global npm@3.10.5
+  npm i -g npm@3.10.5 && \
+  npm i -g nodemon
 
 ENV HOME=/home/app
 
@@ -34,7 +35,7 @@ WORKDIR $HOME/site
 RUN npm install
 
 # start the app
-CMD ["node", "keystone"]
+CMD ["nodemon", "keystone"]
 
 # expose the docker container port to the host
 EXPOSE 3000
