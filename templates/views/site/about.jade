@@ -5,21 +5,22 @@ include ../../mixins/organiser
 block intro
 	.page-intro: .container
 		h1.page-title About
-		p.lead Every 3rd Wednesday of the month you'll find us talking about what we're doing and what's happening around us in the world of JavaScript.
-		p.lead NYCNode wouldn't be possible without our organisers:
+		p.lead 
+			| NYCNode is the 
+			a(href="http://meetup.com/nodejs") NYC Node.js Meetup!&nbsp;
+			| We meet every third Wednesday of the month to talk about the cutting edge of JavaScript and the Node.js community.
 
 block content
-	.page-content
+	.page-intro
 		.section.highlight: .container
-			//- h2 Organisers
-			//- p.lead Each month the NYCNode team works to bring you great presenters in a great venue.
-			.row.about-organisers
-				each org in organisers
-					.col-sm-3
-						+organiser(org)
+			p.lead NYCNode is organized by
+
+			each org in organisers
+				//- .col-sm-6
+				+organiser(org)
 
 
-		//- CODE
+	.page-content
 		.section: .container-sm
 			h2 Code of Conduct
 			p WORDS WORDS WORDS
@@ -34,9 +35,6 @@ block content
 			p If you or someone else is subject to harassment, or you have a concern, please contact the event organisers (who will introduce themselves at the beginning of the event).
 			p The NYCNode community is a welcoming and friendly place – thank you for being a part of it.
 			p If you believe in building people, communities, and software, then you are a part of us.
-			hr.mv-3
-			h5 Thank you
-			p This Code of Conduct has learned and borrowed much from others - especially <a href='http://ruby.org.au/code-of-conduct.html'>rubyaustralia</a>, <a href='http://jsconf.com/codeofconduct.html'>JSConf</a>, and <a href='https://gist.github.com/jcasimir/6992184'>Jeff Casimir</a>. Thank you to all who provided inspiration and feedback.
 
 block js
 	// twitter

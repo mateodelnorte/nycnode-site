@@ -7,7 +7,8 @@ var AttendingApp = React.createClass({
 	getInitialState: function() {
 		return {
 			isReady: RSVPStore.isLoaded(),
-			attendees: RSVPStore.getAttendees()
+			attendees: RSVPStore.getAttendees(),
+			meetup: RSVPStore.getMeetup(),
 		};
 	},
 
@@ -22,34 +23,43 @@ var AttendingApp = React.createClass({
 	updateStateFromStore: function() {
 		this.setState({
 			isReady: RSVPStore.isLoaded(),
-			attendees: RSVPStore.getAttendees()
+			attendees: RSVPStore.getAttendees(),
+			meetup: RSVPStore.getMeetup(),
 		});
 	},
 
 	renderHeading: function() {
 		if (!this.state.isReady) return <h3 className="heading-with-line">...</h3>;
-		var count = this.state.attendees ? this.state.attendees.length : '...';
-		var plural = count === 1 ? ' person is' : ' people are';
-		return <h3 className="heading-with-line"> {count + plural} attending</h3>;
+		console.log(this.state.meetup)
+		var count = this.state.meetup ? this.state.meetup.totalRSVPs : '...';
+		var verb = this.state.meetup.state === 'past' ? 'attended' : 'attending';
+		return <h3 className="heading-with-line"> {count} Nodesters {verb}</h3>;
 	},
 
 	render: function() {
-		var attendeesList;
-		if (this.state.isReady) {
-			attendeesList = this.state.attendees.map(function(person) {
-				return <li key={person.id}><a href={person.url}><img width="40" height="40" alt={person.name} className="img-circle" src={person.photo ? person.photo : "/images/avatar.png"} /></a></li>
-			});
-		}
+	// 	var attendeesList;
+	// 	if (this.state.isReady) {
+	// 		attendeesList = this.state.attendees.map(function(person) {
+	// 			return <li key={person.id}><a href={person.url}><img width="40" height="40" alt={person.name} className="img-circle" src={person.photo ? person.photo : "/images/avatar.png"} /></a></li>
+	// 		});
+	// 	}
+	// 	return (
+	// 		<div>
+	// 			<section className="attending">
+	// 				{this.renderHeading()}
+	// 				<ul className="list-unstyled list-inline text-center attendees-list">
+	// 					{attendeesList}
+	// 				</ul>
+	// 			</section>
+	// 		</div>
+	// 	);
 		return (
 			<div>
 				<section className="attending">
-					{this.renderHeading()}
-					<ul className="list-unstyled list-inline text-center attendees-list">
-						{attendeesList}
-					</ul>
+	 				{this.renderHeading()}
 				</section>
 			</div>
-		);
+		); 
 	}
 
 });

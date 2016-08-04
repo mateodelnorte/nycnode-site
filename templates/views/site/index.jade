@@ -20,11 +20,14 @@ block intro
 				.hero-background
 					img(src='/images/placeholders/new-york.png')
 				.hero-intro-content
+					h1.title NYCNode
 					h5.subtitle #{meetup.state == 'active' ? 'Next' : 'Last'} Meetup
-					h1.title= meetup.name
+					a.title(href="/meetups/" + meetup.key)
+						h1.title= meetup.name
 					p.byline: strong #{meetup._.startDate.format('ddd, DD MMM YYYY')} &#8212; #{meetup._.startDate.format('h:mma')} - #{meetup._.endDate.format('h:mma')}
-					p.byline #{meetup.place} &#8212; 
-						a(href='http://maps.google.com.au/?daddr=' + (meetup.map || meetup.place), target='_blank') Directions
+					p.byline @ #{meetup.place}
+						//- | &#8212; 
+						//- a(href='http://maps.google.com.au/?daddr=' + (meetup.map || meetup.place), target='_blank') Directions
 				if meetup.state === 'active'
 					#react-hero-button
 			//- Details
@@ -77,17 +80,22 @@ block content
 		
 		//- About
 		article.section.section--featured.home-about: .container
-			h2 In New York and into Node.js and Javascript? You need to join NYCNode!
+			h2 In New York and into Node.js and Javascript? You need to 
+				a(href="http://www.meetup.com/nodejs/join/") join NYCNode!
 			.row: .col-sm-8.col-sm-offset-2
-				p.lead Every 3rd Wednesday of the month you'll find us talking about what we're doing and what's happening around us in the world of JavaScript.
+				p.lead 
+					| NYCNode is the 
+					a(href="http://meetup.com/nodejs") NYC Node.js Meetup!&nbsp;
+					| We meet every third Wednesday of the month to talk about the cutting edge of JavaScript and the Node.js community.
+
 			if !user
 				.row: .col-sm-4.col-sm-offset-4
 					a(href='/join', data-from=page.path).js-auth-trigger.btn.btn-lg.btn-block.btn-primary.mv-1
 						span.text-caps Join NYCNode now
 			p.mt-1
 				a(href='/about') Learn more about NYCNode
-				|  &nbsp;&middot;&nbsp; 
-				a(href='/members') Find your friends in NYCNode
+				//- |  &nbsp;&middot;&nbsp; 
+				//- a(href='/members') Find your friends in NYCNode
 			p.mt-1: a(href="https://twitter.com/nycnode", class="twitter-follow-button", data-show-count="true", data-size="large") Follow @nycnode
 //- JS
 block js

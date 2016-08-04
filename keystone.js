@@ -89,6 +89,7 @@ keystone.set('nav', {
 	'meetups': ['meetups', 'talks', 'rsvps'],
 	'members': ['users', 'organisations'],
 	'posts': ['posts', 'post-categories', 'post-comments'],
+	'videos': ['videos'],
 	'links': ['links', 'link-tags', 'link-comments']
 });
 

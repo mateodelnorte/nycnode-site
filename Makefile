@@ -4,6 +4,6 @@ lint:
 run: start
 
 start: 
-	npm start;
+	supervisor keystone.js;
 
 .PHONY: test

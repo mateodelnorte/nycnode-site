@@ -1,0 +1,31 @@
+extends ../../layouts/default
+
+include ../../mixins/video
+
+block intro
+	.page-intro: .container
+		h1.page-title='Videos'
+		p.lead
+			| Scroll down to view a sampling of some of our talks. 
+		span.lead
+			| Interested in presenting?&nbsp;
+			a(href="mailto:mattwalters5+nycnode-talk@gmail.com?subject=NYCNode Talk Proposal") Submit a talk!
+block content
+	.page-content: .container
+		.row
+			div(class= data.videos.length || !data.videos.length ? 'col-md-10' : 'col-md-10 col-md-offset-1')
+				if data.videos.length
+					.video-cards.row(itemscope itemtype="http://schema.org/VideoObject")
+						each video in data.videos
+							+video(video)
+				else
+					h3.text-muted There are no videos yet.
+			//- 
+			//- if data.videos.length
+			//- 	.col-md-2
+			//- 		if data.videos.length
+			//- 			h5.text-muted Filter by tag
+			//- 			ul.list-unstyled.tags-list
+			//- 				li: a(href='/videos', class=!data.videos ? 'active' : false) All
+			//- 				//- each tag in data.videos
+			//- 				//- 	li: a(href='/videos/' + tag.key, class=data.category && data.category.id == tag.id ? 'active' : false).list-group-item= tag.name

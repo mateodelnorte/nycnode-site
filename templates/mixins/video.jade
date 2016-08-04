@@ -1,0 +1,8 @@
+mixin video(video)
+	.col-sm-offset-1.col-sm-12
+		article(role="article", itemscope itemtype="http://schema.org/BlogPosting").post-card
+			a(href='/videos/' + video.key).post-image: img(src=video.images.thumbnail.desktop, alt=video.title).img-responsive
+			.post-summary
+				a(href='/videos/' + video.key)
+					h4(itemprop='name').post-title.mv-1=video.title
+				.post-content-brief(itemprop='description')!= video.description

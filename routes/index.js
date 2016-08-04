@@ -81,40 +81,42 @@ exports = module.exports = function (app) {
 	app.get('/', routes.views.index);
 	app.get('/meetups', routes.views.meetups);
 	app.get('/meetups/:meetup', routes.views.meetup);
-	app.get('/members', routes.views.members);
-	app.get('/members/mentors', routes.views.mentors);
-	app.get('/member/:member', routes.views.member);
-	app.get('/organisations', routes.views.organisations);
-	app.get('/links', routes.views.links);
-	app.get('/links/:tag?', routes.views.links);
-	app.all('/links/link/:link', routes.views.link);
-	app.get('/blog/:category?', routes.views.blog);
-	app.all('/blog/post/:post', routes.views.post);
+	// app.get('/members', routes.views.members);
+	// app.get('/members/mentors', routes.views.mentors);
+	// app.get('/member/:member', routes.views.member);
+	// app.get('/organisations', routes.views.organisations);
+	// app.get('/links', routes.views.links);
+	// app.get('/links/:tag?', routes.views.links);
+	// app.all('/links/link/:link', routes.views.link);
+	// app.get('/blog/:category?', routes.views.blog);
+	// app.all('/blog/post/:post', routes.views.post);
+	app.get('/videos/', routes.views.videos);
+	app.get('/videos/:video', routes.views.video);
 	app.get('/about', routes.views.about);
-	app.get('/mentoring', routes.views.mentoring);
+	// app.get('/mentoring', routes.views.mentoring);
 
 	// app.get('/showbag', routes.views.showbag);
 
 	// Session
-	app.all('/join', routes.views.session.join);
-	app.all('/signin', routes.views.session.signin);
-	app.get('/signout', routes.views.session.signout);
-	app.all('/forgot-password', routes.views.session['forgot-password']);
-	app.all('/reset-password/:key', routes.views.session['reset-password']);
+	// app.all('/join', routes.views.session.join);
+	// app.all('/signin', routes.views.session.signin);
+	// app.get('/signout', routes.views.session.signout);
+	// app.all('/forgot-password', routes.views.session['forgot-password']);
+	// app.all('/reset-password/:key', routes.views.session['reset-password']);
 
 	// Authentication
-	app.all('/auth/confirm', routes.auth.confirm);
-	app.all('/auth/app', routes.auth.app);
-	app.all('/auth/:service', routes.auth.service);
+	// app.all('/auth/confirm', routes.auth.confirm);
+	// app.all('/auth/app', routes.auth.app);
+	// app.all('/auth/:service', routes.auth.service);
 
 	// User
-	app.all('/me*', middleware.requireUser);
-	app.all('/me', routes.views.me);
-	app.all('/me/create/post', routes.views.createPost);
-	app.all('/me/create/link', routes.views.createLink);
+	// app.all('/me*', middleware.requireUser);
+	// app.all('/me', routes.views.me);
+	// app.all('/me/create/post', routes.views.createPost);
+	// app.all('/me/create/link', routes.views.createLink);
 
 	// Tools
-	app.all('/notification-center', routes.views.tools['notification-center']);
+	// app.all('/notification-center', routes.views.tools['notification-center']);
 
 	// API
 	app.all('/api*', keystone.middleware.api);

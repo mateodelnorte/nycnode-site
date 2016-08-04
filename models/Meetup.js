@@ -131,7 +131,7 @@ Meetup.schema.methods.notifyAttendees = function(req, res, next) {
 
 Meetup.schema.set('toJSON', {
 	transform: function(doc, rtn, options) {
-		return _.pick(doc, '_id', 'name', 'startDate', 'endDate', 'place', 'map', 'description', 'rsvpsAvailable', 'remainingRSVPs');
+		return _.pick(doc, '_id', 'name', 'startDate', 'endDate', 'place', 'map', 'description', 'state', 'rsvpsAvailable', 'totalRSVPs', 'remainingRSVPs');
 	}
 });
 

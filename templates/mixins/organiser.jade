@@ -2,7 +2,12 @@ mixin organiser(org)
 	.organiser
 		.organiser__header
 			.img-wrapper
-				img(src=org.image, alt='NYCNode organiser - ' + org.name, width=40, height=40).img-circle
-			h4.organiser__name=org.name
-			p.organiser__twitter: a(href='https://twitter.com/' + org.twitter, target='_blank') @#{org.twitter}
-		p.mv-0=org.title
+				img(src=org.image, alt='NYCNode organiser - ' + org.name, width=80, height=80).img-circle
+			h4.organiser__name Matt Walters
+			p.lead
+				| Get in touch via 
+				a(href='mailto:mattwalters5+nycnode@gmail.com', target='_blank') Email
+				| , 
+				a(href='https://github.com/mateodelnorte', target='_blank') Github
+				| , or
+				a(href='https://twitter.com/mateodelnorte', target='_blank') Twitter

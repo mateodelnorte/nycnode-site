@@ -1,0 +1,108 @@
+extends ../../layouts/default
+
+block content
+	.container
+		a(href='/videos').text-muted &larr; Back to all videos
+		article.full-post
+			if ! video
+				h2 Invalid video
+			else
+				header
+					if video.state != 'published' && user.isAdmin
+						.mt-1: .alert.alert-danger This video has not been published yet. 
+							a(href='/keystone/videos/' + video.id).alert-link Open Keystone
+							|  to publish it.
+					
+					h1.blog-post__title= video.title
+					p.blog-post__byline 
+						if video.author
+							|  by&nbsp;
+							a(href='/members', rel='author')=video.author.name.full
+						if video.publishedDate
+							|  on #{video.publishedDate.format('MMMM D, YYYY')}
+						if video.categories && video.categories.length
+							|  in&nbsp;
+							each cat, cat_i in video.categories
+								a(href='/blog/' + cat.key)= cat.name
+								if cat_i < video.categories.length - 1
+									| ,&nbsp;
+								else
+									|&nbsp;
+
+					.video-container
+						iframe.youtube-video(
+							id="youtube-iframe"
+							allowfullscreen="allowfullscreen" 
+							mozallowfullscreen="mozallowfullscreen" 
+							msallowfullscreen="msallowfullscreen" 
+							oallowfullscreen="oallowfullscreen" 
+							webkitallowfullscreen="webkitallowfullscreen" 
+							src="https://www.youtube.com/embed/" + video.externalVideoId + "?enablejsapi=1"
+							frameborder="0"
+							style="border: solid 1px #37474F")
+					//- 
+					//- if video.images
+					//- 	.post-image.mv-3: img(src=video.images.thumbnail.desktop).img-responsive.img-thumbnail
+					
+					//- sharing buttons
+					.share-buttons
+						span.share-button
+							.fb-share-button(data-href="http://www.nycnode.com/videos/" + video.key, data-colorscheme="light", data-layout="button_count", data-action="like", data-show-faces="false", data-send="false")
+							//- .fb-share-button(data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
+						span.share-button
+							.fb-like(data-href="http://www.nycnode.com/videos/" + video.key, data-colorscheme="light", data-layout="button_count", data-action="like", data-show-faces="false", data-send="false")
+						span.share-button
+							a(href="https://twitter.com/share", data-via="NYCNode", data-hashtags="nycnode", data-count="button", data-dnt="true").twitter-share-button Tweet
+						span.share-button
+							.g-plusone(data-size="medium")
+				//- != video.content.full
+				//- 
+				//- Comment
+					//- .comments
+					//- 	h4.mb-1=video.comments.length == 0 ? 'Be the first to reply' : plural(video.comments.length, '* comment', '* comments')
+					//- 	for comment in video.comments
+					//- 		if comment.author
+					//- 			.comment.media
+					//- 				.pull-left
+					//- 					img(src=comment.author.photo ? comment.author._.photo.thumbnail(60,60) : '/images/placeholders/user-60x60.jpg', alt=comment.author.name.full, width=40, height=40).media-object.img-circle
+					//- 				.media-body
+					//- 					h6.mt-0
+					//- 						=comment.author.name.full
+					//- 						span.text-muted  &middot; #{moment(comment.publishedOn).fromNow()}
+					//- 					!=comment.content.html
+					//- if user
+					//- 	//- Reply form
+					//- 	form(method='post').comment-form.mt-5
+					//- 		input(type='hidden', name='action', value='create-comment')
+					//- 		.media
+					//- 			.pull-left
+					//- 				img(src=user.photo.exists ? user._.photo.thumbnail(60,60) : '/images/placeholders/user-60x60.jpg', alt=user.name.full, width=40, height=40).img-responsive.img-circle
+					//- 			.media-body
+					//- 				textarea(placeholder='Add your comment...', name='content').form-control
+					//- 				.mv-1
+					//- 					button(type='submit').btn.btn-success Submit
+block js
+	script(src='/js/common/share.js')
+	script(src="https://apis.google.com/js/plusone.js")
+	script.
+		$(function() {
+			var $allVideos = $("iframe[src^='//player.vimeo.com'], iframe[src^='//www.youtube.com'], object, embed"),
+				$fluidEl = $("figure");
+			$allVideos.each(function(){
+				$(this)
+					// jQuery .data does not work on object/embed elements
+					.attr('data-aspectRatio', this.height / this.width)
+					.removeAttr('height')
+					.removeAttr('width');
+			});
+			$(window).resize(function() {
+				var newWidth = $fluidEl.width();
+				$allVideos.each(function() {
+					var $el = $(this);
+					$el
+							.width(newWidth)
+							.height(newWidth * $el.attr('data-aspectRatio'));
+				});
+			}).resize();
+		});
+		
