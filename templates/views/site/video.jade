@@ -1,5 +1,11 @@
 extends ../../layouts/default
 
+block head
+	meta(property="og:title" content=video.title)
+	meta(property="og:type" content="video.movie")
+	meta(property="og:url" content="http://www.nycnode.com/videos/" + video.key)
+	meta(property="og:image" content=video.images.thumbnail.mobile)
+
 block content
 	.container
 		a(href='/videos').text-muted &larr; Back to all videos
