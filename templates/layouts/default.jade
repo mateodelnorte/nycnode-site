@@ -9,6 +9,8 @@ html
 		if env == 'production' && chartbeat_property && chartbeat_domain
 			script.
 				var _sf_startpt=(new Date()).getTime()
+		
+		if env == 'production'
 			script(src="//load.sumome.com/" data-sumo-site-id="324c2129aac61d1e215fd0513f747df52e6d82b1fc0695c08d3b999394c8a5df" async="async")
 		
 		meta(charset="utf-8")
