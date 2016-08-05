@@ -22,8 +22,8 @@ Meetup.add({
 	startDate: { type: Types.Datetime, required: true, initial: true, index: true, width: 'short', note: 'e.g. 2014-07-15 / 6:00pm' },
 	endDate: { type: Types.Datetime, required: true, initial: true, index: true, width: 'short', note: 'e.g. 2014-07-15 / 9:00pm' },
 
-	place: { type: String, required: false, initial: true, width: 'medium', default: 'Level 6, 341 George St (Atlassian)', note: 'Usually Atlassian – Level 6, 341 George St' },
-	map: { type: String, required: false, initial: true, width: 'medium', default: 'Level 6, 341 George St', note: 'Level 6, 341 George St' },
+	place: { type: String, required: false, initial: true, width: 'medium', default: 'Shutterstock, NYC', note: 'Shutterstock, NYC' },
+	map: { type: String, required: false, initial: true, width: 'medium', default: 'Shutterstock, NYC', note: 'Shutterstock, NYC' },
 	description: { type: Types.Html, wysiwyg: true },
 
 	maxRSVPs: { type: Number, default: 100 },

@@ -29,9 +29,16 @@ Video.add({
 });
 
 /**
+ * Relationships
+ * =============
+ */
+
+Video.relationship({ ref: 'VideoComment', refPath: 'video', path: 'comments' });
+
+/**
  * Registration
  * ============
  */
 
-Video.defaultColumns = 'name, meetup|20%, who|20%';
+Video.defaultColumns = 'title|20%, description|20%';
 Video.register();

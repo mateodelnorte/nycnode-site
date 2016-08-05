@@ -1,7 +1,7 @@
 var keystone = require('keystone');
 
 var Video = keystone.list('Video');
-// var PostComment = keystone.list('PostComment');
+var VideoComment = keystone.list('VideoComment');
 
 exports = module.exports = function(req, res) {
 
@@ -27,31 +27,30 @@ exports = module.exports = function(req, res) {
 				if (video.state == 'published' || (req.user && req.user.isAdmin) || (req.user && video.author && (req.user.id == video.author.id))) {
 					locals.video = video;
 					locals.page.title = `NYCNode - ${video.title}`;
+					locals.video.populateRelated('comments[author]', next);
 				} else {
 					return res.notfound('Video not found');
 				}
-
-				next();
 
 			});
 
 	});
 
 	// Load recent videos
-	// view.query('data.videos',
-	// 	Video.model.find()
-	// 		.where('state', 'published')
-	// 		.sort('-publishedDate')
-	// );
+	view.query('data.videos',
+		Video.model.find()
+			.where('state', 'published')
+			.sort('-publishedDate')
+	);
 
 	// view.on('post', { action: 'create-comment' }, function(next) {
 
 	// 	// handle form
-	// 	var newPostComment = new PostComment.model({
-	// 			post: locals.post.id,
+	// 	var newVideoComment = new VideoComment.model({
+	// 			video: locals.video.id,
 	// 			author: locals.user.id
 	// 		}),
-	// 		updater = newPostComment.getUpdateHandler(req, res, {
+	// 		updater = newVideoComment.getUpdateHandler(req, res, {
 	// 			errorMessage: 'There was an error creating your comment:'
 	// 		});
 
@@ -64,7 +63,7 @@ exports = module.exports = function(req, res) {
 	// 			locals.validationErrors = err.errors;
 	// 		} else {
 	// 			req.flash('success', 'Your comment has been added successfully.');
-	// 			return res.redirect('/blog/post/' + locals.post.slug);
+	// 			return res.redirect('/videos/' + locals.video.key);
 	// 		}
 	// 		next();
 	// 	});

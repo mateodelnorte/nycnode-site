@@ -32,7 +32,8 @@ var HeroApp = React.createClass({
 	},
 
 	toggleRSVP: function(attending) {
-		RSVPStore.rsvp(attending);
+		window.location = 'http://meetup.com/nodejs'
+		// RSVPStore.rsvp(attending);
 	},
 
 	renderWelcome: function() {
@@ -94,11 +95,11 @@ var HeroApp = React.createClass({
 		e.preventDefault;
 		window.signinModalTrigger(e);
 	},
-
+	/* <a className="btn btn-primary btn-lg btn-block js-auth-trigger" onClick={this.signinModalTrigger}>RSVP Now <span className="text-thin">({this.state.meetup.remainingRSVPs} spots left)</span></a>*/
 	renderRSVPSignin: function() {
 		return (
-			<div className="hero-button">
-				<a className="btn btn-primary btn-lg btn-block js-auth-trigger" onClick={this.signinModalTrigger}>RSVP Now <span className="text-thin">({this.state.meetup.remainingRSVPs} spots left)</span></a>
+			<div className="hero-button">			
+				<a href="http://meetup.com/nodejs/join" className="btn btn-primary btn-lg btn-block">RSVP Now <span className="text-thin">({this.state.meetup.remainingRSVPs} spots left)</span></a>
 			</div>
 		);
 	},
