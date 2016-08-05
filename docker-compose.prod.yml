@@ -3,7 +3,7 @@ mongo:
 
 site:
   build: .
-  dockerfile: Dockerfile.dev
+  dockerfile: Dockerfile.prod
   ports:
     - '3000:3000'
   volumes:
@@ -13,4 +13,4 @@ site:
     - mongo
   environment:
    - MONGO_URI=mongodb://mongo:27017/site
-   - NODE_ENV=development
+   - NODE_ENV=production
