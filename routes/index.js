@@ -7,6 +7,7 @@ var middleware = require('./middleware');
 var graphqlHTTP = require('express-graphql');
 var graphQLSchema = require('../graphql/basicSchema').default;
 var relaySchema = require('../graphql/relaySchema').default;
+const sitemap = require('keystone-express-sitemap');
 
 var importRoutes = keystone.importer(__dirname);
 
@@ -76,6 +77,10 @@ exports = module.exports = function (app) {
 			next();
 		});
 	}
+
+	app.get('/sitemap.xml', function(req, res) {
+		sitemap.create(keystone, req, res);
+	});
 
 	// Website
 	app.get('/', routes.views.index);
