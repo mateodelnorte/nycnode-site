@@ -61,11 +61,13 @@
 	.tile-base();
 	margin-top: 2em;
 	overflow: hidden;
-
+	vertical-align: middle;
 	a {
 		color: @gray-darker;
 	}
-	
+	.video-title {
+		min-height: 42px;
+	}
 	.video-summary {
 		padding: @page-padding / 2;
 		.video-byline {
@@ -79,7 +81,6 @@
 			.video-author { float: left; text-transform: uppercase; }
 			.date-stamp { float: right; }
 		}
-		.video-title {}
 		.video-content-brief {
 			font-size: @font-size-base * 1.1;
 		}
