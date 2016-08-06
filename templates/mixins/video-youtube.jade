@@ -1,0 +1,28 @@
+
+mixin video(video)
+
+	if video.state != 'published' && user.isAdmin
+		.mt-1: .alert.alert-danger This video has not been published yet. 
+			a(href='/keystone/videos/' + video.id).alert-link Open Keystone
+			|  to publish it.
+	br
+	h1.blog-post__title= video.title
+	hr
+	if video.publishedDate
+		|  on #{video.publishedDate.format('MMMM D, YYYY')}
+	.col-sm-12
+		article(role="article", itemscope itemtype="http://schema.org/BlogPosting").post-card
+			.video-container.post-image
+				iframe.youtube-video.img-responsive(
+					id="youtube-iframe"
+					allowfullscreen="allowfullscreen" 
+					mozallowfullscreen="mozallowfullscreen" 
+					msallowfullscreen="msallowfullscreen" 
+					oallowfullscreen="oallowfullscreen" 
+					webkitallowfullscreen="webkitallowfullscreen" 
+					src="https://www.youtube.com/embed/" + video.externalVideoId + "?enablejsapi=1"
+					frameborder="0"
+					style="border: solid 1px #37474F") 
+			.post-summary
+				h4(itemprop='name').post-title.mv-1=video.title
+				.post-content-brief(itemprop='description')!= video.description

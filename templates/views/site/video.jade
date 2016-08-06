@@ -1,5 +1,7 @@
 extends ../../layouts/default
 
+include ../../mixins/video-youtube
+
 block head
 	meta(property="og:title" content=video.title)
 	meta(property="og:type" content="video.movie")
@@ -14,43 +16,11 @@ block content
 				h2 Invalid video
 			else
 				header
-					if video.state != 'published' && user.isAdmin
-						.mt-1: .alert.alert-danger This video has not been published yet. 
-							a(href='/keystone/videos/' + video.id).alert-link Open Keystone
-							|  to publish it.
 					
-					h1.blog-post__title= video.title
-					p.blog-post__byline 
-						if video.author
-							|  by&nbsp;
-							a(href='/members', rel='author')=video.author.name.full
-						if video.publishedDate
-							|  on #{video.publishedDate.format('MMMM D, YYYY')}
-						if video.categories && video.categories.length
-							|  in&nbsp;
-							each cat, cat_i in video.categories
-								a(href='/blog/' + cat.key)= cat.name
-								if cat_i < video.categories.length - 1
-									| ,&nbsp;
-								else
-									|&nbsp;
+					+video(video)
 
-					.video-container
-						iframe.youtube-video(
-							id="youtube-iframe"
-							allowfullscreen="allowfullscreen" 
-							mozallowfullscreen="mozallowfullscreen" 
-							msallowfullscreen="msallowfullscreen" 
-							oallowfullscreen="oallowfullscreen" 
-							webkitallowfullscreen="webkitallowfullscreen" 
-							src="https://www.youtube.com/embed/" + video.externalVideoId + "?enablejsapi=1"
-							frameborder="0"
-							style="border: solid 1px #37474F")
-					//- 
-					//- if video.images
-					//- 	.post-image.mv-3: img(src=video.images.thumbnail.desktop).img-responsive.img-thumbnail
-					
 					//- sharing buttons
+				.col-sm-12
 					.share-buttons
 						span.share-button
 							.fb-share-button(data-href="http://www.nycnode.com/videos/" + video.key, data-colorscheme="light", data-layout="button_count", data-action="like", data-show-faces="false", data-send="false")
