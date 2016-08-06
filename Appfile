@@ -1,0 +1,20 @@
+application {
+  name = "nycnode"
+  type = "node"
+
+  dependency {
+    source = "../nycnode-denormalizer"
+    source = "../nycnode-meetup-ingestor"
+    source = "../nycnode-user-ingestor"
+  }
+}
+
+project {
+  name = "nycnode"
+  infrastructure = "nycnode"
+}
+
+infrastructure "nycnode" {
+  type = "aws"
+  flavor = "simple"
+}

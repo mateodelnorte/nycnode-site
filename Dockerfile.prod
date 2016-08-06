@@ -7,8 +7,7 @@ FROM node:4.4.7
 # will run as root, which is against security best practices and principles.
 # We also install the latest version of npm
 RUN useradd --user-group --create-home --shell /bin/false app && \
-  npm i -g npm@3.10.5 && \
-  npm i -g nodemon
+  npm i -g npm@3.10.5
 
 ENV HOME=/home/app
 
@@ -31,14 +30,18 @@ RUN chown -R app:app $HOME/*
 USER app
 WORKDIR $HOME/site
 
-# Install npm dependencies
-RUN npm install
+# Install npm dependencies (only production for prod mode)
+RUN npm install --only=production
+
+# In production mode, we'll also want to copy over the rest of the source code
+# so it can run without mounted volumes. COPY needs to be run as root.
+USER root
+COPY . $HOME/site
+RUN chown -R app:app $HOME/*
+USER app
 
 # start the app
-CMD ["nodemon", "keystone"]
+CMD ["node", "keystone"]
 
 # expose the docker container port to the host
 EXPOSE 3000
-
-
-
