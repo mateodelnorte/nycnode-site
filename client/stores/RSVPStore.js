@@ -1,18 +1,19 @@
-var _ = require('lodash');
-var Store = require('store-prototype');
-var request = require('superagent');
+const _ = require('lodash');
+const Store = require('store-prototype');
+const request = require('superagent');
 
-var RSVPStore = new Store();
+const RSVPStore = new Store();
 
-var loaded = false;
-var busy = false;
-var meetup = {};
-var rsvp = {};
-var attendees = [];
+const loaded = false;
+const busy = false;
+const meetup = {};
+const rsvp = {};
+const attendees = [];
 
-var REFRESH_INTERVAL = 5000; // 5 seconds
+const REFRESH_INTERVAL = 60000; // one minute
 
-var refreshTimeout = null;
+const refreshTimeout = null;
+
 function cancelRefresh() {
 	clearTimeout(refreshTimeout);
 }
