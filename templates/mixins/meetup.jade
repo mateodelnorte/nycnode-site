@@ -22,7 +22,7 @@ mixin meetup(meetup)
 					each talk in meetup.talks
 						+meetup-talk(talk)
 
-		if meetup.state == 'active'
+		if meetup.state == 'upcoming'
 			hr.mv-2
 			if user
 				if meetup.rsvpsAvailable || rsvpStatus.rsvped && rsvpStatus.attending
@@ -44,7 +44,7 @@ mixin meetup(meetup)
 			hr
 			.text-center
 				.h1.text-muted.mb-0= meetup.totalRSVPs
-				.lead.text-muted people #{meetup.state == 'active' ? "are attending" : "attended"} this meetup
+				.lead.text-muted people #{meetup.state == 'upcoming' ? "are attending" : "attended"} this meetup
 			if meetup.state == 'past'
 				ul.list-unstyled.list-inline.text-center
 					for rsvp in meetup.rsvps

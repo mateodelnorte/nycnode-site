@@ -22,7 +22,7 @@ block intro
 					img(src='/images/placeholders/new-york.png')
 				.hero-intro-content
 					h1.title NYCNode
-					h5.subtitle #{meetup.state == 'active' ? 'Next' : 'Last'} Meetup
+					h5.subtitle #{meetup.state == 'upcoming' ? 'Next' : 'Last'} Meetup
 					a.title(href="/meetups/" + meetup.key)
 						h1.title= meetup.name
 					p.byline: strong #{meetup._.startDate.format('ddd, DD MMM YYYY')} &#8212; #{meetup._.startDate.format('h:mma')} - #{meetup._.endDate.format('h:mma')}
@@ -33,7 +33,7 @@ block intro
 				h1.title.text-center Latest Videos
 				h3.text-center Check out a few of our latest talks. Find even more in our&nbsp;
 					a(href="/videos") videos
-					span&nbsp;section.
+					span &nbsp;section.
 				.row
 					div(class= videos.length || ! videos.length ? 'col-md-offset-1 col-md-10' : 'col-md-10 col-md-offset-1')
 						.video-cards.row(itemscope itemtype="http://schema.org/VideoObject")

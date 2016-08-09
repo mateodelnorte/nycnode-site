@@ -36,7 +36,7 @@ var meetupStateEnum = new GraphQLEnumType({
 	description: 'The state of the meetup',
 	values: {
 		draft: { description: "No published date, it's a draft meetup" },
-		scheduled: { description: "Publish date is before today, it's a scheduled meetup" },
+		upcoming: { description: "Publish date is before today, it's an upcoming meetup" },
 		active: { description: "Publish date is after today, it's an active meetup" },
 		past: { description: "Meetup date plus one day is after today, it's a past meetup" },
 	},

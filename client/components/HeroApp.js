@@ -32,7 +32,7 @@ var HeroApp = React.createClass({
 	},
 
 	toggleRSVP: function(attending) {
-		window.location = 'http://meetup.com/nodejs'
+		window.location = 'http://meetup.com/nodejs';
 		// RSVPStore.rsvp(attending);
 	},
 

@@ -23,7 +23,7 @@ exports = module.exports = function (req, res) {
 
 	view.on('init', function(next) {
 		Meetup.model.findOne()
-			.where('state', 'active')
+			.where('state', 'upcoming')
 			.sort('-startDate')
 			.exec(function(err, activeMeetup) {
 				locals.activeMeetup = activeMeetup;
