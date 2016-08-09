@@ -14,7 +14,7 @@ exports = module.exports = function(req, res) {
 	
 	view.query('upcomingMeetup',
 		Meetup.model.findOne()
-			.where('state', 'active')
+			.where('state', 'upcoming')
 			.sort('-startDate')
 	, 'talks[who]');
 	
