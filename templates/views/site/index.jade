@@ -25,8 +25,18 @@ block intro
 					h5.subtitle #{meetup.state == 'upcoming' ? 'Next' : 'Last'} Meetup
 					a.title(href="/meetups/" + meetup.key)
 						h1.title= meetup.name
-					p.byline: strong #{meetup._.startDate.format('ddd, DD MMM YYYY')} &#8212; #{meetup._.startDate.format('h:mma')} - #{meetup._.endDate.format('h:mma')}
-					p.byline @ #{meetup.place}
+					if meetup.state == 'upcoming'
+						#next-meetup.col-md-offset-4.col-md-4(data-id=meetup.id)
+							if meetup.rsvpsAvailable
+								//- a(href='/join', data-from=page.path).btn.btn-primary.btn-lg.btn-block.js-auth-trigger RSVP Now 
+								a(href='http://meetup.com/nodejs/join', data-from=page.path).btn.btn-primary.btn-lg.btn-block RSVP Now&nbsp;
+									span.text-thin (#{plural(meetup.remainingRSVPs, '* spot left', '* spots left')})
+							else
+								.alert.alert-success.mb-0.text-center No more tickets...
+					hr.col-md-12
+					p.byline.col-md-12: strong #{meetup._.startDate.format('ddd, DD MMM YYYY')} &#8212; #{meetup._.startDate.format('h:mma')} - #{meetup._.endDate.format('h:mma')}
+					p.byline.col-md-12 @ #{meetup.place}
+					
 
 			//- Videos
 			section.hero-details: .container
