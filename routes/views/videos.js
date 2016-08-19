@@ -16,7 +16,7 @@ exports = module.exports = function(req, res) {
 	// Load the posts
 	view.on('init', function(next) {
 		
-		var q = keystone.list('Video').model.find();
+		var q = keystone.list('Video').model.find().sort('sortOrder');
 		
 		q.exec((err, results) => {
 			locals.data.videos = results;

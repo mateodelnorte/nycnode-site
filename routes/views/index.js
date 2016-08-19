@@ -64,7 +64,7 @@ exports = module.exports = function (req, res) {
 
 	view.on('init', function(next) {
 		Video.model.find()
-			.sort('-startDate')
+			.sort('sortOrder')
 			.limit(3)
 			.exec(function(err, videos) {
 				locals.videos = videos;
