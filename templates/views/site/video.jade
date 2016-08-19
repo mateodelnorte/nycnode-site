@@ -3,10 +3,54 @@ extends ../../layouts/default
 include ../../mixins/video-youtube
 
 block head
-	meta(property="og:title" content=video.title)
-	meta(property="og:type" content="video.movie")
+	meta(property="og:site_name" content="NYCNode.com")
 	meta(property="og:url" content="http://www.nycnode.com/videos/" + video.key)
+	meta(property="og:title" content=video.title)
 	meta(property="og:image" content=video.images.thumbnail.mobile)
+	meta(property="og:type" content="video.movie")
+	meta(property="og:description" content=video.description)
+
+	meta(property="al:ios:url" content="vnd.youtube://www.youtube.com/watch?v=HZtlJ6Owdi8&amp;feature=applinks")
+
+	meta(property="al:android:url" content="vnd.youtube://www.youtube.com/watch?v=HZtlJ6Owdi8&amp;feature=applinks")
+	meta(property="al:android:app_name" content="YouTube")
+	meta(property="al:android:package" content="com.google.android.youtube")
+	meta(property="al:web:url" content="http://www.nycnode.com/videos/" + video.key)
+
+	meta(property="og:type" content="video")
+	meta(property="og:video:url" content="http://www.nycnode.com/videos/" + video.key)
+	meta(property="og:video:secure_url" content="http://www.nycnode.com/videos/" + video.key)
+	meta(property="og:video:type" content="text/html")
+	meta(property="og:video:width" content="1280")
+	meta(property="og:video:height" content="720")
+	meta(property="og:video:url" content="http://www.nycnode.com/videos/" + video.key)
+	//- meta(property="og:video:secure_url" content="https://www.youtube.com/v/HZtlJ6Owdi8?version=3&amp;autohide=1")
+	meta(property="og:video:type" content="application/x-shockwave-flash")
+	meta(property="og:video:width" content="1280")
+	meta(property="og:video:height" content="720")
+
+	meta(property="og:video:tag" content="nycnode.com")
+	meta(property="og:video:tag" content="nycnode")
+	meta(property="og:video:tag" content="node.js")
+	meta(property="og:video:tag" content="nodejs")
+	meta(property="og:video:tag" content="node")
+	meta(property="og:video:tag" content="javascript")
+	meta(property="og:video:tag" content="programming")
+
+	meta(property="fb:app_id" content="546372752220147")
+
+	meta(name="twitter:card" content="player")
+	meta(name="twitter:site" content="@nycnode")
+	meta(name="twitter:url" content="http://www.nycnode.com/videos/" + video.key)
+	meta(name="twitter:title" content=video.title)
+	meta(name="twitter:description" content=video.description)
+	meta(name="twitter:image" content=video.images.thumbnail.mobile)
+	meta(name="twitter:app:name:iphone" content="NYCNode")
+	meta(name="twitter:app:name:ipad" content="NYCNode")
+	meta(name="twitter:app:name:googleplay" content="NYCNode")
+	meta(name="twitter:player" content="http://www.nycnode.com/videos/" + video.key)
+	meta(name="twitter:player:width" content="1280")
+	meta(name="twitter:player:height" content="720")
 
 block content
 	.container
