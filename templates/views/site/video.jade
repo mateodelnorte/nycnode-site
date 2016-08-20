@@ -7,7 +7,6 @@ block head
 	meta(property="og:url" content="http://www.nycnode.com/videos/" + video.key)
 	meta(property="og:title" content=video.title)
 	meta(property="og:image" content=video.images.thumbnail.mobile)
-	meta(property="og:type" content="video.movie")
 	meta(property="og:description" content=video.description)
 
 	meta(property="al:ios:url" content="vnd.youtube://www.youtube.com/watch?v=HZtlJ6Owdi8&amp;feature=applinks")
@@ -19,15 +18,13 @@ block head
 
 	meta(property="og:type" content="video")
 	meta(property="og:video:url" content="http://www.nycnode.com/videos/" + video.key)
-	meta(property="og:video:secure_url" content="http://www.nycnode.com/videos/" + video.key)
+	//- meta(property="og:video:secure_url" content="https://www.nycnode.com/videos/" + video.key)
 	meta(property="og:video:type" content="text/html")
 	meta(property="og:video:width" content="1280")
 	meta(property="og:video:height" content="720")
+	
 	meta(property="og:video:url" content="http://www.nycnode.com/videos/" + video.key)
 	//- meta(property="og:video:secure_url" content="https://www.youtube.com/v/HZtlJ6Owdi8?version=3&amp;autohide=1")
-	meta(property="og:video:type" content="application/x-shockwave-flash")
-	meta(property="og:video:width" content="1280")
-	meta(property="og:video:height" content="720")
 
 	meta(property="og:video:tag" content="nycnode.com")
 	meta(property="og:video:tag" content="nycnode")
