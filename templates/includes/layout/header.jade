@@ -1,5 +1,17 @@
 //- HEADER
 header(id='header', role='banner', class=(section == 'home' ? 'header--home' : 'header--page'))
+	script.
+		if (typeof console !== 'undefined' && typeof console.log === 'function' && !window.test) {
+			console.log('NYCNode.com\n' , 
+			'is brought to you by                                                               ', '\n',                                                                                      
+			"# ,----.                  ,--.                ,--.     ,--.                    ,--.          ", '\n',
+			"#'   ,  ,--,--,--.,--,--,-'  '-.,---. ,---. ,-|  |,---.|  ,--,--, ,---.,--.--,-'  '-.,---.   ", '\n',
+			"#|  |   |        ' ,-.  '-.  .-| .-. | .-. ' .-. | .-. |  |      | .-. |  .--'-.  .-| .-. :  ", '\n',
+			"#'  '--'|  |  |  \\ '-'  | |  | \\  \\--' '-' \\ `-' \\  \\--|  |  ||  ' '-' |  |    |  | \\  \\--.  ", '\n',
+			"# `----/`--`--`--'`--`--' `--'  `----'`---' `---' `----`--`--''--'`---'`--'    `--'  `----'   ", '\n',
+			'Visit me at http://iammattwalters.com');
+		}                                             
+
 	nav.navbar(role='navigation'): .container
 		//- Site logo + site nav trigger button (on mobile)
 		.navbar-header
