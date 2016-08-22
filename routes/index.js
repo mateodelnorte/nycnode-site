@@ -95,6 +95,9 @@ exports = module.exports = function (app) {
 	// app.all('/links/link/:link', routes.views.link);
 	// app.get('/blog/:category?', routes.views.blog);
 	// app.all('/blog/post/:post', routes.views.post);
+	app.get('/slack', (req, res) => {
+		res.redirect('https://nycnode.herokuapp.com');
+	});
 	app.get('/videos/', routes.views.videos);
 	app.all('/videos/:video', routes.views.video);
 	app.get('/about', routes.views.about);
