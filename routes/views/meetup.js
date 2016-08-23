@@ -9,7 +9,6 @@ exports = module.exports = function(req, res) {
 		locals = res.locals;
 	
 	locals.section = 'meetups';
-	locals.page.title = 'Meetups - NYCNode';
 	
 	locals.rsvpStatus = {};
 	
@@ -23,6 +22,8 @@ exports = module.exports = function(req, res) {
 				
 				if (err) return res.err(err);
 				if (!meetup) return res.notfound('Post not found');
+
+				locals.page.title = `NYC Node - Meetup - ${meetup.name}`;
 				
 				locals.meetup = meetup;
 				locals.meetup.populateRelated('talks[who] rsvps[who]', next);

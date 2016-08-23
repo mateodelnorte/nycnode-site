@@ -3,6 +3,8 @@ extends ../../layouts/default
 include ../../mixins/video-youtube
 
 block head
+	meta(name="description" content=video.title + ": " + video.description)
+
 	meta(property="og:site_name" content="NYCNode.com")
 	meta(property="og:url" content="http://www.nycnode.com/videos/" + video.key)
 	meta(property="og:title" content=video.title)

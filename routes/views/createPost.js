@@ -7,7 +7,7 @@ exports = module.exports = function(req, res) {
 		locals = res.locals;
 	
 	locals.section = 'me';
-	locals.page.title = 'Create a blog post - NYCNode';
+	locals.page.title = 'NYC Node - Create a blog post';
 	
 	view.on('post', { action: 'create-post' }, function(next) {
 

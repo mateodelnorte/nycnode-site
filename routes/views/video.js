@@ -26,7 +26,7 @@ exports = module.exports = function(req, res) {
 				// Allow admins or the author to see draft posts
 				if (video.state == 'published' || (req.user && req.user.isAdmin) || (req.user && video.author && (req.user.id == video.author.id))) {
 					locals.video = video;
-					locals.page.title = `NYCNode - ${video.title}`;
+					locals.page.title = `NYC Node - ${video.title}`;
 					locals.video.populateRelated('comments[author]', next);
 				} else {
 					return res.notfound('Video not found');

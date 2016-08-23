@@ -8,7 +8,7 @@ exports = module.exports = function(req, res) {
 	
 	// Init locals
 	locals.section = 'videos';
-	locals.page.title = 'Videos - NYCNode';
+	locals.page.title = 'NYC Node - Videos';
 	locals.data = {
 		videos: [],
 	};

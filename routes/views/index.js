@@ -12,7 +12,7 @@ exports = module.exports = function (req, res) {
 
 	locals.section = 'home';
 	locals.meetup = {};
-	locals.page.title = 'Welcome to NYCNode';
+	locals.page.title = 'NYC Node - The NYC Node.js Meetup';
 	locals.videos = [];
 
 	locals.rsvpStatus = {};

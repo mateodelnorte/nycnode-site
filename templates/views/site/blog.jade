@@ -2,6 +2,9 @@ extends ../../layouts/default
 
 include ../../mixins/post
 
+block head
+	meta(name="description" content="The NYCNode and NYC Node.js Meetup Blog!")
+
 block intro
 	.page-intro: .container
 		h1.page-title=data.category ? data.category.name : 'Blog'

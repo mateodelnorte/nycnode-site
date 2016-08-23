@@ -6,7 +6,7 @@ exports = module.exports = function(req, res) {
 		locals = res.locals;
 	
 	locals.section = 'about';
-	locals.page.title = 'About NYCNode';
+	locals.page.title = 'NYC Node - The NYC Node.js Meetup - About';
 	
 	locals.organisers = [
 		{ name: 'Matt Walters', image: 'https://avatars3.githubusercontent.com/u/554847?v=3&s=460', twitter: 'mateodelnorte',       title: 'Lead Organizer' },

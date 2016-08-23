@@ -2,6 +2,9 @@ extends ../../layouts/default
 
 include ../../mixins/meetup
 
+block head
+	meta(name="description" content=meetup.name + " " + meetup.description)
+
 block content
 	.container-sm
 		.page-intro.text-left
