@@ -5,6 +5,13 @@ include ../../mixins/meetup
 block head
 	meta(name="description" content=meetup.name + " " + meetup.description)
 
+	meta(property="og:site_name" content="NYCNode.com")
+	meta(property="og:url" content="http://www.nycnode.com/meetups/" + meetup.key)
+	meta(property="og:title" content="The NYC Node.js Meetup")
+	meta(property="og:image" content="http://www.nycnode.com/images/logo.svg")
+	meta(property="og:description" content=meetup.name)
+
+
 block content
 	.container-sm
 		.page-intro.text-left
