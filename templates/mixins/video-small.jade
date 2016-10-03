@@ -1,6 +1,6 @@
 mixin video(video, size)
 	.col-sm-4
 		article.video(role="article", itemscope itemtype="http://schema.org/Blogvideoing").video-card
-			a(href='/videos/' + video.key)
-					h5(itemprop='name').video-title.mv-1=video.title
 			a(href='/videos/' + video.key).video-image: img(src=video.images.thumbnail.mobile, alt=video.title).img-responsive
+			a(href='/videos/' + video.key)
+				h5(itemprop='name').video-title.mv-1=video.title

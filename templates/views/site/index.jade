@@ -36,7 +36,7 @@ block intro
 									span.text-thin (#{plural(meetup.remainingRSVPs, '* spot left', '* spots left')})
 							else
 								.alert.alert-success.mb-0.text-center No more tickets...
-					hr.col-md-12
+					hr.col-md-10
 					p.byline.col-md-12: strong #{meetup._.startDate.format('ddd, DD MMM YYYY')} &#8212; #{meetup._.startDate.format('h:mma')} - #{meetup._.endDate.format('h:mma')}
 					p.byline.col-md-12 @ #{meetup.place}
 					
