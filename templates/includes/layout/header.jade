@@ -31,14 +31,13 @@ header(id='header', role='banner', class=(section == 'home' ? 'header--home' : '
 				ul.navbar-nav.navbar-nav--left
 					each link in navLinks
 						li(class=(section == link.key ? 'nav-item-' + link.key + ' active' : 'nav-item-' + link.key))
-							if link.image
-								a(href=link.href)
-									img.nav-image(src=link.image)
-									span= link.label
-							else
-								a(href=link.href)= link.label
+							a(href=link.href)= link.label
 								
 					li: a(href='mailto:info@nycnode.com') Contact
+					li: a(href='/slack')
+								img.nav-image(src='/images/slack.svg')
+								span Slack
+					li.twitter-follow-button: a.twitter-follow-button(href="https://twitter.com/nycnode", data-show-count="false", data-size="large") Follow @nycnode
 				ul.navbar-nav.navbar-nav--right
 					//- 	if user
 					//- 		li: a(href='/me').user.hidden-xs

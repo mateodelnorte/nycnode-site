@@ -16,10 +16,6 @@ exports.initLocals = function(req, res, next) {
 		{ label: 'About', key: 'about', href: '/about' },
 		{ label: 'Meetups', key: 'meetups', href: '/meetups' },
 		{ label: 'Videos', key: 'videos', href: '/videos' },
-		{ label: 'Slack', key: 'slack', href: '/slack', image: '/images/slack.svg' },
-		// { label: 'Members',		key: 'members',		href: '/members' },
-		// { label: 'Blog',		key: 'blog',		href: '/blog' },
-		// { label: 'Showbag',		key: 'showbag',		href: '/showbag' }
 	];
 
 	locals.user = req.user;

@@ -101,6 +101,9 @@ a:focus {
 .navbar-custom .nav li.active a:hover {
   color: white;
 }
+li.twitter-follow-button {
+  padding-top: 17px;
+}
 @media (min-width: 768px) {
   .navbar-custom {
     padding: 20px 0;
