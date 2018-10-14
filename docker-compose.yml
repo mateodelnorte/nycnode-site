@@ -6,8 +6,8 @@ site:
   ports:
     - '3000:3000'
   volumes:
-    - .:/home/app/site
-    - /home/app/site/node_modules
+    - .:/home/app
+    - /home/app/node_modules
   links:
     - mongo
   environment:

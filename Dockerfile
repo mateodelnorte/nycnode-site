@@ -1,6 +1,6 @@
 # http://jdlm.info/articles/2016/03/06/lessons-building-node-app-docker.html
 # latest LTS version as of 7/29/16
-FROM node:6.3.1
+FROM node:10
 
 # We create an unprivileged user, prosaically called app, to run the app inside
 # the container. If you don’t do this, then the process inside the container
@@ -14,12 +14,12 @@ ENV HOME=/home/app
 # First copy over the package.json and npm-shrinkwrap.json files
 #
 # NOTE:
-# We could COPY the whole application folder on the host into $HOME/site,
+# We could COPY the whole application folder on the host into $HOME,
 # rather than just the packaging files, but we can save some time on our docker
 # builds by only copying in what we need at this point, and copying in the rest
 # after we run npm install. This takes better advantage of docker build’s layer
 # caching.
-COPY package.json $HOME/site/
+COPY package.json $HOME
 # Files copied into the container with the COPY command end up being owned by
 # root inside of the container, which means that our unprivileged app user can’t
 # read or write them, which it will not like. So, we simply chown them to app
@@ -28,7 +28,7 @@ RUN chown -R app:app $HOME/*
 
 # Change user to app, and enter the site's directory
 USER app
-WORKDIR $HOME/site
+WORKDIR $HOME
 
 # Install npm dependencies
 RUN npm install

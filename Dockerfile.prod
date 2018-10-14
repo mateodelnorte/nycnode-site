@@ -14,12 +14,12 @@ ENV HOME=/home/app
 # First copy over the package.json and npm-shrinkwrap.json files
 #
 # NOTE:
-# We could COPY the whole application folder on the host into $HOME/site,
+# We could COPY the whole application folder on the host into $HOME,
 # rather than just the packaging files, but we can save some time on our docker
 # builds by only copying in what we need at this point, and copying in the rest
 # after we run npm install. This takes better advantage of docker build’s layer
 # caching.
-COPY package.json npm-shrinkwrap.json $HOME/site/
+COPY package.json npm-shrinkwrap.json $HOME/
 # Files copied into the container with the COPY command end up being owned by
 # root inside of the container, which means that our unprivileged app user can’t
 # read or write them, which it will not like. So, we simply chown them to app
@@ -28,7 +28,7 @@ RUN chown -R app:app $HOME/*
 
 # Change user to app, and enter the site's directory
 USER app
-WORKDIR $HOME/site
+WORKDIR $HOME
 
 # Install npm dependencies (only production for prod mode)
 RUN npm install --only=production
@@ -36,7 +36,7 @@ RUN npm install --only=production
 # In production mode, we'll also want to copy over the rest of the source code
 # so it can run without mounted volumes. COPY needs to be run as root.
 USER root
-COPY . $HOME/site
+COPY . $HOME
 RUN chown -R app:app $HOME/*
 USER app
 
