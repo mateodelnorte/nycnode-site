@@ -1,0 +1,30 @@
+apiVersion: skaffold/v1beta2
+kind: Config
+build:
+  artifacts:
+  - image: changeme
+    context: .
+    docker: {}
+  tagPolicy:
+    envTemplate:
+      template: '{{.DOCKER_REGISTRY}}/the-nodejs-meetup/nycnode-site:{{.VERSION}}'
+  local: {}
+deploy:
+  kubectl: {}
+profiles:
+- name: dev
+  build:
+    artifacts:
+    - docker: {}
+    tagPolicy:
+      envTemplate:
+        template: '{{.DOCKER_REGISTRY}}/the-nodejs-meetup/nycnode-site:{{.DIGEST_HEX}}'
+    local: {}
+  deploy:
+    helm:
+      releases:
+      - name: nycnode-site
+        chartPath: charts/nycnode-site
+        setValueTemplates:
+          image.repository: '{{.DOCKER_REGISTRY}}/the-nodejs-meetup/nycnode-site'
+          image.tag: '{{.DIGEST_HEX}}'
